@@ -35,4 +35,8 @@ def blog(request):
    
    return render(request, template_name='website/blog.html')
 
+def project(request):
+   
+   return render(request, template_name='website/project.html')
+
 

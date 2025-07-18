@@ -1,10 +1,10 @@
-{% load static%}
+{% load static %}
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>isha</title>
+  <title>Isha</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -36,26 +36,27 @@
   ======================================================== -->
 </head>
 
-<body class="starter-page-page">
+<body class="index-page">
 
   <header id="header" class="header d-flex align-items-center light-background sticky-top">
     <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+      <a href="{% static 'website/index.html' %}" class="logo d-flex align-items-center me-auto me-xl-0">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1 class="sitename">Isha</h1>
+        <h1 class="sitename">isha</h1>
       </a>
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href=" index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="resume.html">Resume</a></li>
-          <li><a href="project.html">Projects</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
-
-             
+          <li><a href="" class="active">Home</a></li>
+          <li><a href="{% url 'about'  %}">About</a></li>
+          <li><a href="{% url 'resume' %}">Resume</a></li>
+          <li><a href="{% url 'project' %}">Projects</a></li>
+          
+          <li><a href="{% url 'contact' %}">Contact</a></li>
+          <li><a href="{% url 'blog_index' %}">Blog</a></li>
+        </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
@@ -63,50 +64,31 @@
         <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
         <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
         <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-        <a href="https://www.linkedin.com/in/isha-nikam-491359360" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
       </div>
 
     </div>
   </header>
+  {% block content %}
 
-  <main class="main">
 
-    <!-- Starter Section Section -->
-    <section id="starter-section" class="starter-section section">
+  {% endblock content %}
 
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Starter Section</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-      </div><!-- End Section Title -->
 
-      <div class="container" data-aos="fade-up">
-        <p>Use this page as a starter for your own custom pages.</p>
-      </div>
-
-    </section><!-- /Starter Section Section -->
-
-  </main>
 
   <footer id="footer" class="footer light-background">
 
     <div class="container">
       <div class="copyright text-center ">
-        <p>© <span>Copyright</span> <strong class="px-1 sitename">Kelly</strong> <span>All Rights Reserved<br></span></p>
+        <p>© <span>Copyright</span> <strong class="px-1 sitename">ISHA</strong> <span>All Rights Reserved<br></span></p>
       </div>
       <div class="social-links d-flex justify-content-center">
         <a href=""><i class="bi bi-twitter-x"></i></a>
         <a href=""><i class="bi bi-facebook"></i></a>
         <a href=""><i class="bi bi-instagram"></i></a>
-        <a href=""><i class="bi bi-linkedin"></i></a>
+        <a href="https://www.linkedin.com/in/isha-nikam-491359360"><i class="bi bi-linkedin"></i></a>
       </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Distributed by <a href=“https://themewagon.com>ThemeWagon
-      </div>
+     
     </div>
 
   </footer>

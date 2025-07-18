@@ -1,0 +1,95 @@
+{% extends "website/main.html" %}
+{% load static %}
+{% block content %}
+    <html>
+        <head>
+            <title>{{ post.title }}</title>
+            <style>
+                body {
+                    text-align: center;
+               }
+               h2 {
+                   color: #333;
+                   font-size: 2em;
+                   margin-bottom: 10px;
+                   text-align: center;
+               }
+               form {
+                   max-width: 600px;
+                   margin: 20px auto;
+                   padding: 20px;
+                   border: 1px solid #ccc;
+                   border-radius: 5px;
+                   align-items: center;
+               }
+               label {
+                   display: block;
+                   margin-bottom: 10px;
+                   font-weight: bold;
+               }
+               .text {
+                 
+                   text-align: justify;
+                    margin: 5px auto;
+                    max-width: 800px;
+                    padding: 20px;
+                   
+                    text-indent: 50px;
+                }
+            </style>
+        </head>
+
+    <body>
+
+        <div >
+                <img style="border: 0px solid red; border-radius: 10px; " src="{{post.image.url}}" height="200px" />
+        </div>
+        <h2>{{ post.title }}</h2>
+        <small>
+            {{ post.created_on.date }} 
+        </small>
+        <div class="text">
+            <p>{{ post.body | linebreaks }}</p>
+        </div>
+        <h3>Leave a comment:</h3>
+        <form method="post">
+             {% csrf_token %}
+
+            <div>
+                 {{ form.author }}
+            </div>
+            <div>
+                {{ form.body }}
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+         
+        
+    
+    <div class="likes">
+        <form action="{% url 'like_post' post.id %}" method="post">
+            {% csrf_token %}
+            
+            {% for like in post.likes.all %}
+                <label>
+                    <input type="radio" name="like" value="{{ like.id }}">
+                    {{ like.id }}
+                </label>
+            {% endfor %}
+            <button type="submit" class="vote-btn">like &#x1F90E;</button>
+        </form>
+    </div>
+    <h3>Comments:</h3>
+        {% for comment in comments %}
+            <p>
+                On {{ comment.created_on.date }} <b>{{ comment.author }}</b> wrote:
+            </p>
+            <p>
+                {{ comment.body | linebreaks }}
+            </p>
+        {% endfor %}
+   
+
+    </html>
+ </body>
+{% endblock content %}
